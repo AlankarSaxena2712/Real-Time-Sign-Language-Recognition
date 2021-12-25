@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Thanks</folder>
+	<filename>Thanks.c3cda96b-60e4-11ec-b648-5cfb3a0e6dd8.jpg</filename>
+	<path>C:\Users\taran\RealTimeObjectDetection\Tensorflow\workspace\images\collectedimages\Thanks\Thanks.c3cda96b-60e4-11ec-b648-5cfb3a0e6dd8.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Thanks</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>182</xmin>
+			<ymin>183</ymin>
+			<xmax>432</xmax>
+			<ymax>317</ymax>
+		</bndbox>
+	</object>
+</annotation>
