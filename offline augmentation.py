@@ -15,8 +15,10 @@ datagen = ImageDataGenerator(
 
 # read your dataset and apply the datagen object to it
 # dataset = []
-path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dataset')
-for imageFolders in os.listdir(path):
+# path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dataset')
+path = r"D:\Projects\Real-Time-Sign-Language-Recognition"
+folders = ['hello', 'ILoveYou', 'no', 'ThankYou', 'yes']
+for imageFolders in folders:
     dataset = []
     for imageFiles in os.listdir(os.path.join(path, imageFolders)):
         if imageFiles.endswith('.jpg'):
