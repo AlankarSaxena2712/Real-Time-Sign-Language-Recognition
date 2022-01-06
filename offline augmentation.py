@@ -17,7 +17,7 @@ datagen = ImageDataGenerator(
 # dataset = []
 # path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dataset')
 path = r"D:\Projects\Real-Time-Sign-Language-Recognition"
-folders = ['hello', 'ILoveYou', 'no', 'ThankYou', 'yes']
+folders = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 for imageFolders in folders:
     dataset = []
     for imageFiles in os.listdir(os.path.join(path, imageFolders)):

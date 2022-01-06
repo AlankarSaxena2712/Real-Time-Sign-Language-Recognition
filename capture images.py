@@ -6,7 +6,7 @@ import time
 
 imageFolderPath = r"D:\Projects\Real-Time-Sign-Language-Recognition"
 
-labels = ["hello", "ILoveYou", "no", "ThankYou", "yes"]
+labels = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 numberImgs = 20
 
 for label in labels:
