@@ -13,6 +13,7 @@ datagen = ImageDataGenerator(
     fill_mode='constant'
     )
 
+# read your dataset and apply the datagen object to it
 # dataset = []
 path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dataset')
 for imageFolders in os.listdir(path):
@@ -32,7 +33,8 @@ for imageFolders in os.listdir(path):
         batch_size=16,
         save_to_dir=os.path.join(path, imageFolders),
         save_prefix='aug',
-        save_format='jpg'):    
+        save_format='jpg'
+        ):    
         i += 1
         if i > 65:
             break
