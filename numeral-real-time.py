@@ -3,12 +3,12 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
+from tensorflow.keras.preprocessing.image import img_to_array
 # import pyttsx3
-#engine = pyttsx3.init()
-
 
 # load saved model from PC
-
+model = tf.keras.models.load_model('numeral_model.h5')
+print(model.summary())
 
 #initiating the video source, 0 for internal camera
 cap = cv2.VideoCapture(0)
@@ -18,24 +18,24 @@ while(True):
     cv2.rectangle(frame, (100, 100), (300, 300), (0, 0, 255), 5) 
     #region of intrest
     roi = frame[100:300, 100:300]
-    img = cv2.resize(roi, (50, 50))
+    img = cv2.resize(roi, (128, 128))
     cv2.imshow('roi', roi)
-    
-
-    img = img/255
+    arr = []
+    img = img_to_array(img)
+    arr.append(img)
+    arr = np.array(arr)
 
     #make predication about the current frame
-    prediction = model.predict(img.reshape(1,50,50,3))
-    char_index = np.argmax(prediction)
+    prediction = model.predict(arr)
+    label = np.argmax(prediction, axis=1)
     #print(char_index,prediction[0,char_index]*100)
 
-    confidence = round(prediction[0,char_index]*100, 1)
-    predicted_char = labels[char_index]
+    # confidence = prediction[label]*100
 
     # Initialize the engine 
-    engine = pyttsx3.init() 
-    engine.say(predicted_char) 
-    engine.runAndWait()
+    # engine = pyttsx3.init() 
+    # engine.say(label) 
+    # engine.runAndWait()
 
     font = cv2.FONT_HERSHEY_TRIPLEX
     fontScale = 1
@@ -43,7 +43,7 @@ while(True):
     thickness = 2
 
     #writing the predicted char and its confidence percentage to the frame
-    msg = predicted_char +', Conf: ' +str(confidence)+' %'
+    msg = str(label)
     cv2.putText(frame, msg, (80, 80), font, fontScale, color, thickness)
     
     cv2.imshow('frame',frame)
