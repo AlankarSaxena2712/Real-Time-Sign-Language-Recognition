@@ -6,7 +6,6 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 # create datagen object
 datagen = ImageDataGenerator(
     rotation_range=20,
-    shear_range=0.2,
     zoom_range=0.2,
     horizontal_flip=False,
     brightness_range=[0.5, 1.5],
