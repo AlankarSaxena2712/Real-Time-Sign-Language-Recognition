@@ -5,19 +5,18 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 # create datagen object
 datagen = ImageDataGenerator(
-    rotation_range=20,
-    zoom_range=0.2,
+    rotation_range=0,
+    zoom_range=0,
     horizontal_flip=False,
-    brightness_range=[0.5, 1.5],
     fill_mode='constant'
     )
 
 # read your dataset and apply the datagen object to it
 # dataset = []
 # path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Dataset')
-path = r"D:\Projects\Real-Time-Sign-Language-Recognition\Dataset\Static-Words"
-# folders = ['CalmDown', 'Fine', 'Help', 'Hungry', 'IHateYou', 'Sorry', 'Stand', 'Stop',
-#         'Where', 'Why', 'okay']
+path = "Dataset/Static-Words"
+folders = ['Family', 'Father', 'Fine', 'Hungry', 'IHateYou', 'Key', 'Love', 'Mother', 'okay', 'Pray']
+
 
 # folders = list(os.listdir(path))
 # print(folders)
@@ -33,24 +32,24 @@ path = r"D:\Projects\Real-Time-Sign-Language-Recognition\Dataset\Static-Words"
 for imageFolders in folders:
     dataset = []
     for imageFiles in os.listdir(os.path.join(path, imageFolders)):
-        if imageFiles.endswith('.jpg'):
+        if imageFiles.endswith('.png'):
             img = cv2.imread(os.path.join(path, imageFolders, imageFiles))
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-            img = cv2.resize(img, (256, 256))
+            img = cv2.resize(img, (50, 50))
             # cv2.imshow('image', img)
             dataset.append(img)
-
+# print(np.array(dataset).shape)
     # print(imageFolders, "has", len(dataset), "images")
     i = 0
     for batch in datagen.flow(
         np.array(dataset),
-        batch_size=16,
+        batch_size=15,
         save_to_dir=os.path.join(path, imageFolders),
         save_prefix='aug',
         save_format='jpg'
-        ):    
+    ):    
         i += 1
-        if i > 65:
+        if i > 1499:
             break
     print(imageFolders, "augmnetation is done")
 print("Done")
